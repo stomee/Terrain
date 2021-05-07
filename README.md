@@ -1,9 +1,11 @@
-# ExampleExtension
-An example extension for Minestom based off of Sabre/kotlin libs.
+# Terrain
+Attempt to replicate latest version terrain generation.
+Don't worry, it's not the main focus,
+and it does not have to be perfect.
 
 ## Installation
 
-Download the jar from [Releases](https://github.com/Project-Cepi/ExampleExtension/releases)
+Download the jar from [Releases](https://github.com/stomee/Terrain/releases)
 OR compile it yourself. Instructions to do so are in Compile header
 
 Drop it into the `/extensions` folder.
@@ -13,7 +15,7 @@ Drop it into the `/extensions` folder.
 Create a folder, then
 Clone the repository using:
 
-`git clone https://github.com/Project-Cepi/Sabre.git`
+`git clone https://github.com/stomee/Terrain.git`
 
 Once it is cloned, make sure you have gradle installed, and run
 
