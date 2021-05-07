@@ -8,7 +8,6 @@ import net.minestom.server.instance.ChunkGenerator
 import net.minestom.server.instance.ChunkPopulator
 import net.minestom.server.instance.batch.ChunkBatch
 import net.minestom.server.instance.block.Block
-import net.minestom.server.utils.BlockPosition
 import net.minestom.server.world.biomes.Biome
 import stomee.terrain.generator.populator.TreePopulator
 import java.util.*
@@ -50,14 +49,9 @@ object StomChunkGenerator : ChunkGenerator {
         }
     }
 
-    override fun fillBiomes(biomes: Array<Biome>, chunkX: Int, chunkZ: Int) {
+    override fun fillBiomes(biomes: Array<Biome>, chunkX: Int, chunkZ: Int) =
         Arrays.fill(biomes, MinecraftServer.getBiomeManager().getById(0))
-    }
 
-    override fun getPopulators(): List<ChunkPopulator> {
-        val list: MutableList<ChunkPopulator> = ArrayList()
-        list.add(treeGen)
-        return list
-    }
+    override fun getPopulators(): List<ChunkPopulator> = listOf(treeGen)
 
 }
