@@ -16,7 +16,7 @@ class TreePopulator : ChunkPopulator {
         JNoise.newBuilder().perlin().setInterpolation(InterpolationType.LINEAR).setSeed(StomChunkGenerator.random.nextInt().toLong())
             .setFrequency(0.6).build()
 
-    val tree: Structure = Structure()
+    private val tree: Structure = Structure()
 
     //todo improve
     override fun populateChunk(batch: ChunkBatch, chunk: Chunk) {

@@ -9,6 +9,7 @@ import net.minestom.server.instance.ChunkPopulator
 import net.minestom.server.instance.batch.ChunkBatch
 import net.minestom.server.instance.block.Block
 import net.minestom.server.world.biomes.Biome
+import stomee.terrain.generator.populator.GrassPopulator
 import stomee.terrain.generator.populator.TreePopulator
 import java.util.*
 
@@ -21,6 +22,7 @@ object StomChunkGenerator : ChunkGenerator {
             .setFrequency(0.4).build()
 
     private val treeGen: TreePopulator = TreePopulator()
+    private val grassGen: GrassPopulator = GrassPopulator()
 
     fun getHeight(x: Int, z: Int): Int {
         val preHeight = jNoise.getNoise(x / 16.0, z / 16.0)
@@ -52,6 +54,6 @@ object StomChunkGenerator : ChunkGenerator {
     override fun fillBiomes(biomes: Array<Biome>, chunkX: Int, chunkZ: Int) =
         Arrays.fill(biomes, MinecraftServer.getBiomeManager().getById(0))
 
-    override fun getPopulators(): List<ChunkPopulator> = listOf(treeGen)
+    override fun getPopulators(): List<ChunkPopulator> = listOf(treeGen, grassGen)
 
 }
