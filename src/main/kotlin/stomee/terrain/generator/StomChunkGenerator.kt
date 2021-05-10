@@ -26,14 +26,14 @@ object StomChunkGenerator : ChunkGenerator {
 
     fun getHeight(x: Int, z: Int): Int {
         val preHeight = jNoise.getNoise(x / 16.0, z / 16.0)
-        return ((if (preHeight > 0) preHeight * 6 else preHeight * 4) + 64).toInt()
+        return ((if (preHeight > 0) preHeight * 20 else preHeight * 10) + 60).toInt()
     }
 
     override fun generateChunkData(batch: ChunkBatch, chunkX: Int, chunkZ: Int) {
         for (x in 0 until Chunk.CHUNK_SIZE_X) {
             for (z in 0 until Chunk.CHUNK_SIZE_Z) {
                 val height = getHeight(x + chunkX * 16, z + chunkZ * 16)
-                for (y in 0 until height) {
+                for (y in 0 until height.coerceAtMost(256)) {
                     when {
                         y == 0 -> batch.setBlock(x, y, z, Block.BEDROCK)
                         y == height - 1 -> batch.setBlock(x, y, z, Block.GRASS_BLOCK)

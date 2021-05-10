@@ -9,6 +9,7 @@ import net.minestom.server.instance.block.Block
 import net.minestom.server.utils.BlockPosition
 import stomee.terrain.generator.StomChunkGenerator
 import stomee.terrain.generator.Structure
+import world.cepi.kstom.util.getBlockStateId
 
 class GrassPopulator : ChunkPopulator {
 
@@ -27,6 +28,12 @@ class GrassPopulator : ChunkPopulator {
                     ) > 0.2
                 ) {
                     val y = StomChunkGenerator.getHeight(i + chunk.chunkX * 16, j + chunk.chunkZ * 16)
+
+                    val position = BlockPosition(i, y, j)
+
+                    if (chunk.getBlockStateId(position) != Block.AIR.blockId)
+                        continue
+
                     grass.build(batch, BlockPosition(i, y, j))
                 }
             }

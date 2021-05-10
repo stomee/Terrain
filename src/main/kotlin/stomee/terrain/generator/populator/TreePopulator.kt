@@ -9,6 +9,7 @@ import net.minestom.server.instance.block.Block
 import net.minestom.server.utils.BlockPosition
 import stomee.terrain.generator.StomChunkGenerator
 import stomee.terrain.generator.Structure
+import world.cepi.kstom.util.getBlockStateId
 
 class TreePopulator : ChunkPopulator {
 
@@ -28,6 +29,12 @@ class TreePopulator : ChunkPopulator {
                     ) > 0.75
                 ) {
                     val y = StomChunkGenerator.getHeight(i + chunk.chunkX * 16, j + chunk.chunkZ * 16)
+
+                    val position = BlockPosition(i, y, j)
+
+                    if (chunk.getBlockStateId(position) != Block.WATER.blockId)
+                        continue
+
                     tree.build(batch, BlockPosition(i, y, j))
                 }
             }
